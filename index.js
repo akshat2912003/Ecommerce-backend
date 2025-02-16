@@ -9,8 +9,12 @@ const { jwtStrategy } = require("./config/passport");
 const app = express();
 
 // Enable CORS for all requests
-app.use(cors());
-
+app.use(cors({
+    origin: "https://ecommerce-frontend-zne5.onrender.com", // ✅ Allow only your frontend
+    credentials: true, // ✅ Required when using `withCredentials: true`
+    methods: ["GET", "POST", "PUT", "DELETE"], // ✅ Specify allowed methods
+    allowedHeaders: ["Content-Type", "Authorization"], // ✅ Specify allowed headers
+  }));
 mongoose.connect(config.mongoose.url).then(() => {
     console.log("Connected to MongoDB");
 });
