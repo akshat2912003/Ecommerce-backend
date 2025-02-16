@@ -9,10 +9,7 @@ const { jwtStrategy } = require("./config/passport");
 const app = express();
 
 // Enable CORS for all requests
-app.use(cors({
-    origin: "http://localhost:5173", // Allow requests from frontend
-    credentials: true // Allow cookies & authorization headers
-}));
+app.use(cors());
 
 mongoose.connect(config.mongoose.url).then(() => {
     console.log("Connected to MongoDB");
